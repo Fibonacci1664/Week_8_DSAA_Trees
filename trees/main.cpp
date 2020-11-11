@@ -58,12 +58,12 @@ void test_orgchart()
 
 	cout << "Testing size()\n";
 	assert(chart.size() == 11);
-	Person *lee = cas->add_child("Lee");
+	Person* lee = cas->add_child("Lee");
 	assert(chart.size() == 12);
 
 	cout << "Testing height()\n";
 	assert(chart.height() == 4);
-	Person *mia = kim->add_child("Mia");
+	Person* mia = kim->add_child("Mia");
 	assert(chart.height() == 5);
 }
 

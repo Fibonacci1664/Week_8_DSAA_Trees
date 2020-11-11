@@ -134,13 +134,44 @@ private:
 			 */
 			if (found)
 			{
-				return found;
+				return found;	// Rtn true.
 			}
 			else
 			{
-				return found;
+				return found;	// Rtn false.
 			}
 		}		
+	}
+
+	int size(int count = 0)
+	{
+		// Iterate over every node in the tree counting as we go.
+		for (Person* child : children_)
+		{
+			count = child->size(count + 1);
+		}
+
+		// Return count.
+		return count;
+	}
+
+	int height(int currHeight = 0, int maxStoredHeight = 0)
+	{
+		// Iterate over every node in the tree counting as we go.
+		for (Person* child : children_)
+		{
+			maxStoredHeight = child->height(currHeight + 1, maxStoredHeight);
+		}
+
+		if (currHeight > maxStoredHeight)
+		{
+			maxStoredHeight = currHeight;
+			return maxStoredHeight;
+		}
+		else
+		{
+			return maxStoredHeight;
+		}	
 	}
 
 	// -- Member variables --
@@ -197,13 +228,18 @@ public:
 	/** Returns the number of people in the organisation. */
 	int size() const
 	{
-		return -1; // FIXME: Write this method!
+		int size = root_->size();
+
+		// Return num + 1, we add 1 as we need to include the root node.
+		return size + 1;
 	}
 
 	/** Returns the number of levels in the org chart. */
 	int height() const
 	{
-		return -1; // FIXME: Write this method!
+		int height = root_->height();
+
+		return height + 1;
 	}
 
 private:
