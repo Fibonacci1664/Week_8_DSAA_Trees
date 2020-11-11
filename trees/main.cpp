@@ -12,26 +12,31 @@
 using std::cout;
 using std::endl;
 
-void test_orgchart() {
+void test_orgchart()
+{
+	// DEPTH 0
 	// The CEO.
 	OrgChart chart("Ada");
-	Person *ada = chart.root();
-
+	Person* ada = chart.root();
+	
+	// DEPTH 1.
 	// The section heads.
-	Person *ben = ada->add_child("Ben");
-	Person *cas = ada->add_child("Cas");
-
+	Person* ben = ada->add_child("Ben");
+	Person* cas = ada->add_child("Cas");
+	
+	// DEPTH 2.
 	// The workers on the factory floor.
-	Person *dan = ben->add_child("Dan");
-	Person *ell = ben->add_child("Ell");
-	Person *fay = ben->add_child("Fay");
-	Person *gus = cas->add_child("Gus");
-	Person *hal = cas->add_child("Hal");
-	Person *ivy = cas->add_child("Ivy");
-
+	Person* dan = ben->add_child("Dan");
+	Person* ell = ben->add_child("Ell");
+	Person* fay = ben->add_child("Fay");
+	Person* gus = cas->add_child("Gus");
+	Person* hal = cas->add_child("Hal");
+	Person* ivy = cas->add_child("Ivy");
+	
+	// DEPTH 3.
 	// The apprentices.
-	Person *jeb = ell->add_child("Jeb");
-	Person *kim = gus->add_child("Kim");
+	Person* jeb = ell->add_child("Jeb");
+	Person* kim = gus->add_child("Kim");
 
 	cout << "Employees of AdaCorp:\n";
 	chart.print();
@@ -62,7 +67,8 @@ void test_orgchart() {
 	assert(chart.height() == 5);
 }
 
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	test_orgchart();
 
 	cout << "All OK!\n";
